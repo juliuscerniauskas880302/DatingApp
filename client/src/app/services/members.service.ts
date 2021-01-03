@@ -46,4 +46,12 @@ export class MembersService {
     );
   }
 
+  setMainPhoto(photoId: number): Observable<any> {
+    return this.http.put(this.baseUlr + 'users/set-main-photo/' + photoId, {});
+  }
+
+  deletePhoto(photoId: number): Observable<any> {
+    return this.http.delete(this.baseUlr + 'users/delete-photo/' + photoId);
+  }
+
 }
