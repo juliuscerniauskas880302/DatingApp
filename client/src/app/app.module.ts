@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavComponent} from './nav/nav.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {MemberListComponent} from './members/member-list/member-list.component';
@@ -16,14 +16,17 @@ import {MessagesComponent} from './messages/messages.component';
 import {SharedModule} from './modules/shared.module';
 import {TestErrorsComponent} from './errors/test-errors/test-errors.component';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
-import { MemberCardComponent } from './members/member-card/member-card.component';
+import {NotFoundComponent} from './errors/not-found/not-found.component';
+import {ServerErrorComponent} from './errors/server-error/server-error.component';
+import {MemberCardComponent} from './members/member-card/member-card.component';
 import {JwtInterceptor} from './interceptors/jwt.interceptor';
-import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import {MemberEditComponent} from './members/member-edit/member-edit.component';
 import {LoadingInterceptor} from './interceptors/loading.interceptor';
 import {NgxSpinnerModule} from 'ngx-spinner';
-import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import {PhotoEditorComponent} from './members/photo-editor/photo-editor.component';
+import { TextInputComponent } from './forms/text-input/text-input.component';
+import { DateInputComponent } from './forms/date-input/date-input.component';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -40,17 +43,21 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     ServerErrorComponent,
     MemberCardComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TextInputComponent,
+    DateInputComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    SharedModule,
-    NgxSpinnerModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        SharedModule,
+        NgxSpinnerModule,
+        ReactiveFormsModule,
+        BsDatepickerModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
